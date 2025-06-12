@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2 Month Monniversary <3</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #f6e0b5;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #ffc0cb;
+      font-size: 2rem;
+      color: #8b0000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      background-color: #c71585;
+      z-index: 0;
+    }
+
+    .event {
+      width: 45%;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      margin: 40px 0;
+      padding: 20px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      z-index: 1;
+    }
+
+    .event.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .event::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: #c71585;
+      border-radius: 50%;
+      border: 3px solid white;
+      z-index: 2;
+    }
+
+    .event:nth-child(odd) {
+      align-self: flex-start;
+    }
+
+    .event:nth-child(odd)::before {
+      left: 100%;
+      transform: translateX(-50%);
+    }
+
+    .event:nth-child(even) {
+      align-self: flex-end;
+    }
+
+    .event:nth-child(even)::before {
+      left: -10%;
+      transform: translateX(-50%);
+    }
+
+    .event img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .event h2 {
+      margin: 15px 0 10px;
+      color: #c71585;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+    }
+
+    .event p {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .fade-in-on-scroll {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-in-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pdf-section, .spotify-section, .countdown-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .pdf-frame {
+      width: 90%;
+      height: 600px;
+      border: none;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .pdf-caption {
+      margin-bottom: 40px;
+      color: #8b0000;
+      font-size: 1.2rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .kitty-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .kitty-rain img {
+      position: absolute;
+      width: 25px;
+    }
+
+    .countdown-text {
+      font-size: 1.5rem;
+      color: #8b0000;
+      text-align: center;
+      max-width: 700px;
+      margin-top: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const password = "120425"; // 🔐 Your chosen password
+    const entered = sessionStorage.getItem("authenticated");
+
+    if (entered !== "true") {
+      const userPassword = prompt("Enter the password to view this site:");
+      if (userPassword !== password) {
+        alert("Incorrect password. You cannot access this site.");
+        document.body.innerHTML = "";
+        throw new Error("Access denied");
+      } else {
+        sessionStorage.setItem("authenticated", "true");
+      }
+    }
+  </script>
+  <audio autoplay loop>
+    <source src="soft-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="kitty-rain" id="kittyRain"></div>
+
+  <header>
+    2 Months of Us ❤️
+  </header>
+
+  <section class="timeline" id="timeline"></section>
+
+  <section class="pdf-section fade-in-on-scroll">
+    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">Love Letter 💌</h2>
+    <p class="pdf-caption">This is a letter for you by your lover <3</p>
+    <iframe class="pdf-frame" src="love-letter.pdf"></iframe>
+  </section>
+
+  <section class="pdf-section fade-in-on-scroll">
+    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">60 Reasons Why I Love You 📖</h2>
+    <p class="pdf-caption">This has every small detail about you which I like and love</p>
+    <iframe class="pdf-frame" src="60-reasons.pdf"></iframe>
+  </section>
+
+  <section class="spotify-section fade-in-on-scroll">
+    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">Spotify Playlist for you 🎶</h2>
+    <p class="pdf-caption">Every song from this playlist reminds me of you <3</p>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2cGtRBl4YALDQKoPaoh8lJ?utm_source=generator" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </section>
+
+  <section class="countdown-section fade-in-on-scroll">
+    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">Time Since We’ve Been Together ⏳</h2>
+    <div class="countdown-text" id="countdownDisplay">Loading...</div>
+  </section>
+
+  <script>
+    const timelineData = [
+      { img: "Images/26mar.png", title: "When We First Met (26 march)", text: "Never thought my gambling bio would give me a true love, first day of ours and we already had late night talks, definitely something up 😋" },
+      { img: "Images/29mar.png", title: "She Gave me Her insta!!!", text: "she just gave me her instagram I'd, definitely worth to follow..." },
+      { img: "Images/5apr.png", title: "She Did Her Face Reveal!", text: "yep, she looks just as beautiful as she talks..." },
+      { img: "Images/5apr2.png", title: "Already falling for her", text: "this is the same day she showed her face..." },
+      { img: "Images/5apr3.png", title: "you sure we ain't dating?", text: "we were already a couple even before we were couple XD" },
+      { img: "Images/8apr.png", title: "first time felt someone is being real with me", text: "this is the first time you consoled me 🥹" },
+      { img: "Images/12apr.png", title: "She accepted my proposal", text: "I was so happy that day..." },
+      { img: "Images/12apr2.png", title: "sending you my first I Love You Text", text: "'ilsym feels so dead' 😭" },
+      { img: "Images/s1.jpeg", title: "she gave me her instagram password", text: "yes, she did, she is so loyal to me..." },
+      { img: "Images/s2.jpeg", title: "we had our first virtual date", text: "yes, it's a roblox date x.x" }
+    ];
+
+    const timelineEl = document.getElementById('timeline');
+    timelineData.forEach(data => {
+      const eventEl = document.createElement('div');
+      eventEl.classList.add('event');
+      eventEl.innerHTML = `<img src="${data.img}" alt="event image"/><h2>${data.title}</h2><p>${data.text}</p>`;
+      timelineEl.appendChild(eventEl);
+    });
+
+    const fadeInElements = document.querySelectorAll('.fade-in-on-scroll, .event');
+    const fadeInOnScroll = () => {
+      fadeInElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+
+    const kittyRain = document.getElementById('kittyRain');
+    const kittyImages = [
+      'https://i.imgur.com/rYVGtfW.png',
+      'https://i.imgur.com/Dzi5DoU.png'
+    ];
+    for (let i = 0; i < 15; i++) {
+      const img = document.createElement('img');
+      img.src = kittyImages[Math.floor(Math.random() * kittyImages.length)];
+      img.style.left = Math.random() * 100 + 'vw';
+      const duration = 4 + Math.random() * 4;
+      img.style.animationDuration = duration + 's';
+      const rotateDeg = (Math.random() * 90 * (Math.random() < 0.5 ? -1 : 1)).toFixed(2);
+      const animName = `fallRotate${i}`;
+      const styleSheet = document.styleSheets[0];
+      styleSheet.insertRule(`@keyframes ${animName} {
+        0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(${rotateDeg}deg); opacity: 0; }
+      }`, styleSheet.cssRules.length);
+      img.style.animation = `${animName} ${duration}s linear infinite`;
+      kittyRain.appendChild(img);
+    }
+
+    const startDate = new Date('2025-04-12T01:33:40');
+    const countdownDisplay = document.getElementById('countdownDisplay');
+    setInterval(() => {
+      const now = new Date();
+      const diff = now - startDate;
+      const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
+      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const minutes = Math.floor(diff / (1000 * 60)) % 60;
+      const seconds = Math.floor(diff / 1000) % 60;
+      countdownDisplay.textContent = `It's been ${months} month(s), ${days} day(s), ${hours} hour(s), ${minutes} minute(s), and ${seconds} second(s) our relationship is on, and I feel like every moment of this is worth it, hope I get to see you in real life someday and we get a day out of our hard lives for each other in real life and spend the rest of the life being with each other 💗`;
+    }, 1000);
+  </script>
+</body>
+</html>
