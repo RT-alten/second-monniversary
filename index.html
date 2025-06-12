@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2 Month Monniversary <3</title>
   <style>
+    #passwordOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffc0cb;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#passwordOverlay input {
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #c71585;
+  margin-bottom: 10px;
+}
+
+#passwordOverlay button {
+  padding: 8px 20px;
+  font-size: 1rem;
+  background: #c71585;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap');
 
     body {
@@ -173,21 +204,11 @@
   </style>
 </head>
 <body>
-  <script>
-    const password = "120425"; // 🔐 Your chosen password
-    const entered = sessionStorage.getItem("authenticated");
-
-    if (entered !== "true") {
-      const userPassword = prompt("Enter the password to view this site:");
-      if (userPassword !== password) {
-        alert("Incorrect password. You cannot access this site.");
-        document.body.innerHTML = "";
-        throw new Error("Access denied");
-      } else {
-        sessionStorage.setItem("authenticated", "true");
-      }
-    }
-  </script>
+  <div id="passwordOverlay">
+  <input type="password" id="passwordInput" placeholder="Enter Your Password Here:" />
+  <button onclick="checkPassword()">Unlock</button>
+  <p id="errorMsg" style="color: red; font-family: sans-serif;"></p>
+</div>
   <audio autoplay loop>
     <source src="soft-music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -293,5 +314,23 @@
       countdownDisplay.textContent = `It's been ${months} month(s), ${days} day(s), ${hours} hour(s), ${minutes} minute(s), and ${seconds} second(s) our relationship is on, and I feel like every moment of this is worth it, hope I get to see you in real life someday and we get a day out of our hard lives for each other in real life and spend the rest of the life being with each other 💗`;
     }, 1000);
   </script>
+  <script>
+  const correctPassword = "120425"; // <-- Set your real password here
+
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    const errorMsg = document.getElementById("errorMsg");
+
+    if (input === correctPassword) {
+      document.getElementById("passwordOverlay").style.display = "none";
+      document.body.style.overflow = "auto"; // allow scroll after unlock
+    } else {
+      errorMsg.textContent = "Wrong password! Try again.";
+    }
+  }
+
+  // Block scroll until unlocked
+  document.body.style.overflow = "hidden";
+</script>
 </body>
 </html>
