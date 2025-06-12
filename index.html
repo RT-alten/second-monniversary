@@ -5,46 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2 Month Monniversary <3</title>
   <style>
+    /* Password overlay CSS */
     #passwordOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #ffc0cb;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffc0cb;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #passwordOverlay input {
+      padding: 10px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #c71585;
+      margin-bottom: 10px;
+    }
+    #passwordOverlay button {
+      padding: 8px 20px;
+      font-size: 1rem;
+      background: #c71585;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #passwordOverlay p {
+      margin-top: 10px;
+      font-family: sans-serif;
+    }
 
-#passwordOverlay input {
-  padding: 10px;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  border: 1px solid #c71585;
-  margin-bottom: 10px;
-}
-
-#passwordOverlay button {
-  padding: 8px 20px;
-  font-size: 1rem;
-  background: #c71585;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
+    /* Rest of your styles ... */
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap');
-
     body {
       margin: 0;
       font-family: 'Playfair Display', serif;
       background-color: #f6e0b5;
       overflow-x: hidden;
     }
-
     header {
       text-align: center;
       padding: 40px 20px;
@@ -56,7 +59,6 @@
       z-index: 1000;
       font-family: 'Great Vibes', cursive;
     }
-
     .timeline {
       position: relative;
       padding: 60px 20px;
@@ -64,7 +66,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     .timeline::before {
       content: "";
       position: absolute;
@@ -76,7 +77,6 @@
       background-color: #c71585;
       z-index: 0;
     }
-
     .event {
       width: 45%;
       background: white;
@@ -90,12 +90,10 @@
       transition: opacity 1s ease, transform 1s ease;
       z-index: 1;
     }
-
     .event.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .event::before {
       content: "";
       position: absolute;
@@ -107,60 +105,49 @@
       border: 3px solid white;
       z-index: 2;
     }
-
     .event:nth-child(odd) {
       align-self: flex-start;
     }
-
     .event:nth-child(odd)::before {
       left: 100%;
       transform: translateX(-50%);
     }
-
     .event:nth-child(even) {
       align-self: flex-end;
     }
-
     .event:nth-child(even)::before {
       left: -10%;
       transform: translateX(-50%);
     }
-
     .event img {
       width: 100%;
       border-radius: 10px;
     }
-
     .event h2 {
       margin: 15px 0 10px;
       color: #c71585;
       font-family: 'Great Vibes', cursive;
       font-size: 1.8rem;
     }
-
     .event p {
       font-size: 1.1rem;
       color: #333;
     }
-
     .fade-in-on-scroll {
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 1s ease, transform 1s ease;
     }
-
     .fade-in-on-scroll.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .pdf-section, .spotify-section, .countdown-section {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 60px 20px;
     }
-
     .pdf-frame {
       width: 90%;
       height: 600px;
@@ -169,7 +156,6 @@
       border-radius: 10px;
       margin-bottom: 20px;
     }
-
     .pdf-caption {
       margin-bottom: 40px;
       color: #8b0000;
@@ -177,7 +163,6 @@
       font-style: italic;
       text-align: center;
     }
-
     .kitty-rain {
       position: fixed;
       top: 0;
@@ -187,12 +172,10 @@
       pointer-events: none;
       z-index: 999;
     }
-
     .kitty-rain img {
       position: absolute;
       width: 25px;
     }
-
     .countdown-text {
       font-size: 1.5rem;
       color: #8b0000;
@@ -205,132 +188,114 @@
 </head>
 <body>
   <div id="passwordOverlay">
-  <input type="password" id="passwordInput" placeholder="Enter Your Password Here:" />
-  <button onclick="checkPassword()">Unlock</button>
-  <p id="errorMsg" style="color: red; font-family: sans-serif;"></p>
-</div>
+    <input type="password" id="passwordInput" placeholder="Enter Your Password Here:" />
+    <button onclick="checkPassword()">Unlock</button>
+    <p id="errorMsg"></p>
+  </div>
+
   <audio autoplay loop>
     <source src="soft-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
   <div class="kitty-rain" id="kittyRain"></div>
-
-  <header>
-    2 Months of Us ❤️
-  </header>
+  <header>2 Months of Us ❤️</header>
 
   <section class="timeline" id="timeline"></section>
 
   <section class="pdf-section fade-in-on-scroll">
-    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">Love Letter 💌</h2>
+    <h2 style="color:#c71585; font-family:'Great Vibes',cursive;">Love Letter 💌</h2>
     <p class="pdf-caption">This is a letter for you by your lover <3</p>
     <iframe class="pdf-frame" src="love-letter.pdf"></iframe>
   </section>
 
   <section class="pdf-section fade-in-on-scroll">
-    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">60 Reasons Why I Love You 📖</h2>
-    <p class="pdf-caption">This has every small detail about you which I like and love</p>
+    <h2 style="color:#c71585; font-family:'Great Vibes',cursive;">60 Reasons Why I Love You 📖</h2>
+    <p class="pdf-caption">Every small detail that makes me love you</p>
     <iframe class="pdf-frame" src="60-reasons.pdf"></iframe>
   </section>
 
   <section class="spotify-section fade-in-on-scroll">
-    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">Spotify Playlist for you 🎶</h2>
-    <p class="pdf-caption">Every song from this playlist reminds me of you <3</p>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2cGtRBl4YALDQKoPaoh8lJ?utm_source=generator" width="80%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <h2 style="color:#c71585; font-family:'Great Vibes',cursive;">Spotify Playlist for you 🎶</h2>
+    <p class="pdf-caption">Every song reminds me of you <3</p>
+    <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/playlist/2cGtRBl4YALDQKoPaoh8lJ?utm_source=generator" 
+            width="80%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media;" loading="lazy"></iframe>
   </section>
 
   <section class="countdown-section fade-in-on-scroll">
-    <h2 style="color:#c71585; font-family: 'Great Vibes', cursive;">Time Since We’ve Been Together ⏳</h2>
+    <h2 style="color:#c71585; font-family:'Great Vibes',cursive;">Time Since We’ve Been Together ⏳</h2>
     <div class="countdown-text" id="countdownDisplay">Loading...</div>
   </section>
 
   <script>
+    // Combined JS after everything
+    const correctPassword = "120425"; // <-- Your password
+
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      const err = document.getElementById("errorMsg");
+      if (input === correctPassword) {
+        document.getElementById("passwordOverlay").style.display = "none";
+        document.body.style.overflow = "auto";
+      } else {
+        err.textContent = "Wrong password! Try again.";
+      }
+    }
+    document.body.style.overflow = "hidden";
+
     const timelineData = [
-      { img: "Images/26mar.png", title: "When We First Met (26 march)", text: "Never thought my gambling bio would give me a true love, first day of ours and we already had late night talks, definitely something up 😋" },
-      { img: "Images/29mar.png", title: "She Gave me Her insta!!!", text: "she just gave me her instagram I'd, definitely worth to follow..." },
+      { img: "Images/26mar.png", title: "When We First Met (26 march)", text: "Never thought my gambling bio would give me a true love, first day of ours and we already had late night talks 😋" },
+      { img: "Images/29mar.png", title: "She Gave me Her insta!!!", text: "she just gave me her instagram ID, definitely worth to follow..." },
       { img: "Images/5apr.png", title: "She Did Her Face Reveal!", text: "yep, she looks just as beautiful as she talks..." },
       { img: "Images/5apr2.png", title: "Already falling for her", text: "this is the same day she showed her face..." },
-      { img: "Images/5apr3.png", title: "you sure we ain't dating?", text: "we were already a couple even before we were couple XD" },
+      { img: "Images/5apr3.png", title: "you sure we ain't dating?", text: "we were already a couple even before we said..." },
       { img: "Images/8apr.png", title: "first time felt someone is being real with me", text: "this is the first time you consoled me 🥹" },
       { img: "Images/12apr.png", title: "She accepted my proposal", text: "I was so happy that day..." },
       { img: "Images/12apr2.png", title: "sending you my first I Love You Text", text: "'ilsym feels so dead' 😭" },
-      { img: "Images/s1.jpeg", title: "she gave me her instagram password", text: "yes, she did, she is so loyal to me..." },
-      { img: "Images/s2.jpeg", title: "we had our first virtual date", text: "yes, it's a roblox date x.x" }
+      { img: "Images/s1.jpeg", title: "she gave me her instagram password", text: "yes, she did—so loyal!" },
+      { img: "Images/s2.jpeg", title: "we had our first virtual date", text: "yes, it's a Roblox date x.x" }
     ];
-
     const timelineEl = document.getElementById('timeline');
     timelineData.forEach(data => {
-      const eventEl = document.createElement('div');
-      eventEl.classList.add('event');
-      eventEl.innerHTML = `<img src="${data.img}" alt="event image"/><h2>${data.title}</h2><p>${data.text}</p>`;
-      timelineEl.appendChild(eventEl);
+      const ev = document.createElement('div');
+      ev.classList.add('event');
+      ev.innerHTML = `<img src="${data.img}" alt="img"/><h2>${data.title}</h2><p>${data.text}</p>`;
+      timelineEl.appendChild(ev);
     });
 
-    const fadeInElements = document.querySelectorAll('.fade-in-on-scroll, .event');
-    const fadeInOnScroll = () => {
-      fadeInElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          el.classList.add('visible');
-        }
-      });
-    };
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('load', fadeInOnScroll);
+    const fadeIns = document.querySelectorAll('.fade-in-on-scroll, .event');
+    const doFade = () => fadeIns.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 100)
+        el.classList.add('visible');
+    });
+    window.addEventListener('scroll', doFade);
+    window.addEventListener('load', doFade);
 
     const kittyRain = document.getElementById('kittyRain');
-    const kittyImages = [
-      'https://i.imgur.com/rYVGtfW.png',
-      'https://i.imgur.com/Dzi5DoU.png'
-    ];
-    for (let i = 0; i < 15; i++) {
-      const img = document.createElement('img');
-      img.src = kittyImages[Math.floor(Math.random() * kittyImages.length)];
-      img.style.left = Math.random() * 100 + 'vw';
-      const duration = 4 + Math.random() * 4;
-      img.style.animationDuration = duration + 's';
-      const rotateDeg = (Math.random() * 90 * (Math.random() < 0.5 ? -1 : 1)).toFixed(2);
-      const animName = `fallRotate${i}`;
-      const styleSheet = document.styleSheets[0];
-      styleSheet.insertRule(`@keyframes ${animName} {
-        0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(100vh) rotate(${rotateDeg}deg); opacity: 0; }
-      }`, styleSheet.cssRules.length);
-      img.style.animation = `${animName} ${duration}s linear infinite`;
+    ['https://i.imgur.com/rYVGtfW.png','https://i.imgur.com/Dzi5DoU.png'].forEach((src, i) => {
+      const img = new Image();
+      img.src = src;
+      img.style.left = Math.random()*100+'vw';
+      const d = 4 + Math.random()*4;
+      img.style.animation = `fallRotate${i} ${d}s linear infinite`;
+      document.styleSheets[0].insertRule(`@keyframes fallRotate${i}{
+        0%{transform:translateY(-100px) rotate(0deg);opacity:1;}
+        100%{transform:translateY(100vh) rotate(${(Math.random()*90*(Math.random()<.5?-1:1)).toFixed(2)}deg);opacity:0;}
+      }`,document.styleSheets[0].cssRules.length);
       kittyRain.appendChild(img);
-    }
+    });
 
-    const startDate = new Date('2025-04-12T01:33:40');
-    const countdownDisplay = document.getElementById('countdownDisplay');
+    const start = new Date('2025-04-12T01:33:40');
     setInterval(() => {
-      const now = new Date();
-      const diff = now - startDate;
-      const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
-      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-      const minutes = Math.floor(diff / (1000 * 60)) % 60;
-      const seconds = Math.floor(diff / 1000) % 60;
-      countdownDisplay.textContent = `It's been ${months} month(s), ${days} day(s), ${hours} hour(s), ${minutes} minute(s), and ${seconds} second(s) our relationship is on, and I feel like every moment of this is worth it, hope I get to see you in real life someday and we get a day out of our hard lives for each other in real life and spend the rest of the life being with each other 💗`;
-    }, 1000);
+      const diff = Date.now() - start;
+      const m = Math.floor(diff/2592000000);
+      const d = Math.floor(diff/86400000)%30;
+      const h = Math.floor(diff/3600000)%24;
+      const mi = Math.floor(diff/60000)%60;
+      const s = Math.floor(diff/1000)%60;
+      document.getElementById('countdownDisplay').textContent =
+        `It's been ${m} month(s), ${d} day(s), ${h} hour(s), ${mi} minute(s), and ${s} second(s) ... every moment worth it 💗`;
+    },1000);
   </script>
-  <script>
-  const correctPassword = "120425"; // <-- Set your real password here
-
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value;
-    const errorMsg = document.getElementById("errorMsg");
-
-    if (input === correctPassword) {
-      document.getElementById("passwordOverlay").style.display = "none";
-      document.body.style.overflow = "auto"; // allow scroll after unlock
-    } else {
-      errorMsg.textContent = "Wrong password! Try again.";
-    }
-  }
-
-  // Block scroll until unlocked
-  document.body.style.overflow = "hidden";
-</script>
 </body>
 </html>
